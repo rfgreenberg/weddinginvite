@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+
+    <title>Wedding Invitation</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page" aria-label="Wedding invitation">
+      <div class="intro" id="intro" aria-hidden="true">
+        <div class="envelope" aria-hidden="true">
+          <div class="env env-back"></div>
+          <div class="env env-paper"></div>
+          <div class="env env-front"></div>
+          <div class="env env-flap"></div>
+
+          <div class="intro-card" aria-hidden="true">
+            <div class="intro-card-inner">
+              <div class="intro-to">You’re invited</div>
+              <div class="intro-names">Rebecca &amp; Gavin's Wedding</div>
+              <div class="intro-date">July 5, 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="invite" id="invite">
+        <img
+          class="hero-photo"
+          src="./inviteimage.png"
+          alt="Photo of the couple"
+        />
+
+        <div class="hosts" aria-label="Hosts">
+          Mr. and Mrs. Brian & Lori Greenberg and Mr. and Mrs. Laurie & Cheryl Broll
+          request the pleasure of your company.
+        </div>
+
+        <h2 class="section-title" id="events">Wedding Events</h2>
+
+        <div class="events" aria-label="Events list">
+          <div class="event">
+            <div class="event-date">Saturday: July 4th BBQ - 5:00 PM</div>
+            <div class="event-location">Location: [BBQ Location]</div>
+            <div class="event-body">
+              <div>BBQ at 5 p.m. We’ll celebrate America’s 250th birthday together.</div>
+              <div>Dress Code: Casual</div>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-date">Sunday: The Big Day - 3:00 PM</div>
+            <div class="event-location">Location: Oceano Hotel - Half Moon Bay, CA</div>
+            <div class="event-body">
+              <div>
+                We invite you to our wedding ceremony and reception. The ceremony will begin at
+                3 p.m., cocktail hour and reception will follow.
+              </div>
+              <div>Dress Code: Cocktail Attire</div>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-date">Monday: Farewell Brunch - 9:00 AM</div>
+            <div class="event-location">Location: Oceano Hotel - Half Moon Bay, CA</div>
+            <div class="event-body">
+              <div>Join us for a farewell brunch at the hotel at 9 a.m.</div>
+              <div>Dress Code: Casual</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rsvp-block" aria-label="RSVP">
+          <div class="rsvp-title">RSVP online and by June 5th</div>
+          <a
+            class="btn btn-primary"
+            id="rsvpButton"
+            href="https://www.zola.com/wedding/rebeccagavin2026/rsvp"
+            target="_blank"
+            rel="noreferrer"
+          >
+            RSVP online
+          </a>
+          <div class="rsvp-note">Check email for website password.</div>
+        </div>
+
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
