@@ -240,7 +240,8 @@ body.intro-done #invite {
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: var(--shadow);
-  padding: 16px;
+  --invite-pad: 16px;
+  padding: var(--invite-pad);
   text-align: center;
 }
 
@@ -257,6 +258,11 @@ body.intro-done #invite {
   width: 100%;
   height: auto;
   display: block;
+  margin-left: calc(-1 * var(--invite-pad));
+  margin-right: calc(-1 * var(--invite-pad));
+  margin-top: calc(-1 * var(--invite-pad));
+  width: calc(100% + (2 * var(--invite-pad)));
+  max-width: none;
   object-fit: cover;
 }
 
@@ -442,7 +448,7 @@ body.intro-done #invite {
 
 @media (max-width: 820px) {
   .invite {
-    padding: 14px;
+    --invite-pad: 14px;
   }
 }
 
@@ -452,7 +458,7 @@ body.intro-done #invite {
   }
 
   .invite {
-    padding: 12px;
+    --invite-pad: 12px;
   }
 
   .topline {
