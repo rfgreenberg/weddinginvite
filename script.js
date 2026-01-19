@@ -67,8 +67,8 @@ function logLinkClick() {
     id: id,
     campaign: 'invite_open',
     recipient: params.get('email') || 'not_provided', 
-    ua: navigator.userAgent,           // Sends browser info to the 'userAgent' variable
-    ref: document.referrer || 'direct', // Sends the previous page to the 'referrer' variable
+    ua: 'INVITE_LINK_OPEN',           // Sends browser info to the 'userAgent' variable
+    ref: document.referrer || 'WEDDING_INVITE_OPEN', // Sends the previous page to the 'referrer' variable
     t: Date.now()
   });
 
