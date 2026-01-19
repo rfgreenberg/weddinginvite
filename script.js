@@ -57,21 +57,22 @@ function normalizeUrl(url) {
 function logLinkClick() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
-  const recipient = params.get('email'); // Assuming your URL has ?email=user@example.com
   
   if (!id) return;
 
   const base = 'https://script.google.com/macros/s/AKfycbwl57S2OF5bu5ipPZqG0ZwrGBY0l6c2MAWyCtGwToYuM45oh6zVENACfPkpbSSAPxxi/exec';
   
-  // Construct parameters to match your Apps Script expectations
-  const queryParams = new URLSearchParams({
+  // We add 'recipient', 'ua', and 'ref' so the Apps Script has data for those columns
+  const trackingParams = new URLSearchParams({
     id: id,
     campaign: 'invite_open',
-    recipient: recipient || 'unknown',
+    recipient: params.get('email') || 'not_provided', 
+    ua: navigator.userAgent,           // Sends browser info to the 'userAgent' variable
+    ref: document.referrer || 'direct', // Sends the previous page to the 'referrer' variable
     t: Date.now()
   });
 
-  fetch(`${base}?${queryParams.toString()}`, {
+  fetch(`${base}?${trackingParams.toString()}`, {
     mode: 'no-cors',
     keepalive: true,
   });
