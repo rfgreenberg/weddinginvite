@@ -62,13 +62,12 @@ function logLinkClick(tracker, referrer) {
 
   const base = 'https://script.google.com/macros/s/AKfycbwl57S2OF5bu5ipPZqG0ZwrGBY0l6c2MAWyCtGwToYuM45oh6zVENACfPkpbSSAPxxi/exec';
   
-  // We add 'recipient', 'ua', and 'ref' so the Apps Script has data for those columns
   const trackingParams = new URLSearchParams({
-    id: id,
-    campaign: 'invite_open',
-    recipient: params.get('email') || 'not_provided', 
-    ua: tracker,           // Sends browser info to the 'userAgent' variable
-    ref: referrer, // Sends the previous page to the 'referrer' variable
+    id: id,                     // Column A
+    campaign: 'invite_open',    // Column D
+    recipient: id,              // <--- THIS puts the ID in Column E
+    ua: tracker || navigator.userAgent,           
+    ref: referrer || document.referrer, 
     t: Date.now()
   });
 
@@ -77,7 +76,6 @@ function logLinkClick(tracker, referrer) {
     keepalive: true,
   });
 }
-
 
 function setLink(el, url) {
   const normalized = normalizeUrl(url);
