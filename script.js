@@ -54,13 +54,24 @@ function normalizeUrl(url) {
   if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) return trimmed;
   return `https://${trimmed}`;
 }
-function logLinkClick(){
+function logLinkClick() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
+  const recipient = params.get('email'); // Assuming your URL has ?email=user@example.com
+  
   if (!id) return;
+
   const base = 'https://script.google.com/macros/s/AKfycbwl57S2OF5bu5ipPZqG0ZwrGBY0l6c2MAWyCtGwToYuM45oh6zVENACfPkpbSSAPxxi/exec';
-  // "no-cors" avoids CORS errors since we don't need to read the response
-  fetch(`${base}?campaign=invite_open&id=${encodeURIComponent(id)}&t=${Date.now()}`, {
+  
+  // Construct parameters to match your Apps Script expectations
+  const queryParams = new URLSearchParams({
+    id: id,
+    campaign: 'invite_open',
+    recipient: recipient || 'unknown',
+    t: Date.now()
+  });
+
+  fetch(`${base}?${queryParams.toString()}`, {
     mode: 'no-cors',
     keepalive: true,
   });
