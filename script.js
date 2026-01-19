@@ -54,7 +54,7 @@ function normalizeUrl(url) {
   if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) return trimmed;
   return `https://${trimmed}`;
 }
-function logLinkClick() {
+function logLinkClick(tracker, referrer) {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
   
@@ -67,8 +67,8 @@ function logLinkClick() {
     id: id,
     campaign: 'invite_open',
     recipient: params.get('email') || 'not_provided', 
-    ua: 'INVITE_LINK_OPEN',           // Sends browser info to the 'userAgent' variable
-    ref: document.referrer || 'WEDDING_INVITE_OPEN', // Sends the previous page to the 'referrer' variable
+    ua: tracker,           // Sends browser info to the 'userAgent' variable
+    ref: referrer, // Sends the previous page to the 'referrer' variable
     t: Date.now()
   });
 
@@ -133,8 +133,14 @@ function setLink(el, url) {
   );
 
   runIntroAnimation();
-  logLinkClick();
-  if (rsvpButton) setLink(rsvpButton, CONFIG.rsvpUrl);
+  logLinkClick('INVITE_LINK_OPEN','WEDDING_INVITE_OPEN');
+  if (rsvpButton) {
+    rsvpButton.addEventListener("click", (e) => {
+      e.preventDefault(); // This stops the '#' from jumping the page to the top
+      logLinkClick('RSVP_CLICKED', "WEDDING_INVITE_RSVP");     // Optional: Run your tracking
+      window.open(CONFIG.rsvpUrl, "_blank", "noreferrer");
+    });
+  }
   if (websiteButton) setLink(websiteButton, CONFIG.weddingWebsiteUrl);
 
   const websiteText = normalizeUrl(CONFIG.weddingWebsiteUrl);
