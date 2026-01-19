@@ -60,7 +60,7 @@ function logLinkClick(){
   if (!id) return;
   const base = 'https://script.google.com/macros/s/AKfycbwl57S2OF5bu5ipPZqG0ZwrGBY0l6c2MAWyCtGwToYuM45oh6zVENACfPkpbSSAPxxi/exec';
   // "no-cors" avoids CORS errors since we don't need to read the response
-  fetch(`${base}?event=invite_open&id=${encodeURIComponent(id)}&t=${Date.now()}`, {
+  fetch(`${base}?campaign=invite_open&id=${encodeURIComponent(id)}&t=${Date.now()}`, {
     mode: 'no-cors',
     keepalive: true,
   });
